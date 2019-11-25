@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static  'app/css/home.css' %}">
+    
+</head>
+<body>
+    
+    <form action="{% url 'updated' %}" method="post">
+            {% csrf_token %}
+        <table style="border:1px solid black;" >
+                <th>id</th>
+                <th>username</th>
+                <th>password</th>
+                <th>email</th>
+            {% if key %}
+            {% for i in key %}
+           
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.uname }}</td>
+            <td>{{ i.passw }}</td>
+            <td>{{ i.email }}</td>            
+        </tr>        
+        </table> 
+        <table>
+            <tr><td>Edit:</td></tr>
+            <tr>
+                    <tr>
+                        <td><input type="hidden" name="i" value="{{i.id}}"></td>
+                    </tr>
+                <td>Userame</td>
+                <td><input type="text" name="username"/></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email"/></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password"/></td>
+            </tr>
+
+            
+
+            <tr>
+                <td>
+                    <input type="submit"  value="save"/>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </table>
+    </form>
+</body>
+</html>

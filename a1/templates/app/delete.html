@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/app/css/edit.css' %}">
+</head>
+<body>
+   <form action="{% url 'deleted' %}" method="POST" >
+       {% csrf_token %}
+    <table style="border: 1px solid red;">
+                    <th>id</th>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>email</th>
+                                                            
+        {% if key1 %}
+        {% for i in key1 %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.uname }}</td>
+            <td>{{ i.passw }}</td>
+            <td>{{ i.email }}</td>            
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+    </table>
+    <input type="number" name='i'><br>
+    <input type="submit" value="deleted">
+</form>
+
+</body>
+</html>
